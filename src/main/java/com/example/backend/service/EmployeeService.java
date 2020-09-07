@@ -35,6 +35,15 @@ public class EmployeeService {
         return empl;
     }
 
+    public EmployeeDAO update(Long id, EmployeeDTO employee) {
+        EmployeeDAO empl = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee with id " + id + " does not exist"));
+        empl.setFirstName(employee.getFirstName());
+        empl.setLastName(employee.getLastName());
+        empl.setEmailAddress(employee.getEmailAddress());
+        return repository.save(empl);
+    }
+
     public Map<String, String> deleteEmployee(Long id) {
         HashMap<String, String> message = new HashMap<>();
         message.put("message", "Employee deleted successfully!");
