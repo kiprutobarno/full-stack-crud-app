@@ -1,0 +1,25 @@
+package com.example.backend.controller;
+
+import com.example.backend.model.dto.EmployeeDTO;
+import com.example.backend.service.EmployeeService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("/api/v1")
+public class employeeController {
+    @Autowired
+    private EmployeeService service;
+
+    @PostMapping("/employees")
+    public ResponseEntity<?> createEmployee(@RequestBody EmployeeDTO employee) {
+        return ResponseEntity.ok(service.add(employee));
+    }
+}

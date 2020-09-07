@@ -1,7 +1,5 @@
 package com.example.backend.model.dto;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
-
 public class EmployeeDTO {
     private String firstName;
     private String lastName;
