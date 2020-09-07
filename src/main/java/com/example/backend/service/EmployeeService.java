@@ -29,4 +29,12 @@ public class EmployeeService {
     public EmployeeDAO getSpecificEmployee(Long id) {
         return repository.findById(id).get();
     }
+
+    public EmployeeDAO update(Long id, EmployeeDTO emplUpdate) {
+        EmployeeDAO employee = repository.findById(id).get();
+        employee.setFirstName(emplUpdate.getFirstName());
+        employee.setLastName(emplUpdate.getLastName());
+        employee.setEmailAddress(emplUpdate.getEmailAddress());
+        return repository.save(employee);
+    }
 }
