@@ -7,6 +7,7 @@ import java.util.Map;
 import com.example.backend.model.dao.EmployeeDAO;
 import com.example.backend.model.dto.EmployeeDTO;
 import com.example.backend.repository.EmployeeRepository;
+import com.example.backend.utils.exceptions.ResourceNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,13 +30,16 @@ public class EmployeeService {
     }
 
     public EmployeeDAO getSpecificEmployee(Long id) {
-        return repository.findById(id).get();
+        EmployeeDAO empl = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee with id " + id + " does not exist"));
+        return empl;
     }
 
     public Map<String, String> deleteEmployee(Long id) {
         HashMap<String, String> message = new HashMap<>();
         message.put("message", "Employee deleted successfully!");
-        EmployeeDAO empl = repository.findById(id).get();
+        EmployeeDAO empl = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee with id " + id + " does not exist"));
         repository.delete(empl);
         return message;
     }
