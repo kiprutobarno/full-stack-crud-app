@@ -7,6 +7,8 @@ import com.example.backend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmployeeService {
     @Autowired
@@ -18,5 +20,9 @@ public class EmployeeService {
         emp.setLastName(employee.getLastName());
         emp.setEmailAddress(employee.getEmailAddress());
         return repository.save(emp);
+    }
+
+    public List<EmployeeDAO> getAllEmployees() {
+        return repository.findAll();
     }
 }
