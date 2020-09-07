@@ -25,4 +25,8 @@ public class EmployeeService {
     public List<EmployeeDAO> getAllEmployees() {
         return repository.findAll();
     }
+
+    public EmployeeDAO getSpecificEmployee(Long id) {
+        return repository.findById(id).get();
+    }
 }
