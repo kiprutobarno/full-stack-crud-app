@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import EmployeeComponent from "./components/EmployeeComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<EmployeeComponent />, document.getElementById("root"));
