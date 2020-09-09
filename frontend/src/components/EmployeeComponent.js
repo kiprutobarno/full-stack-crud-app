@@ -8,6 +8,7 @@ class EmployeeComponent extends Component {
     this.state = {
       employees: [],
     };
+    this.createEmployee = this.createEmployee.bind(this);
   }
 
   async componentDidMount() {
@@ -15,10 +16,17 @@ class EmployeeComponent extends Component {
     this.setState({ employees: response.data });
   }
 
+  createEmployee() {
+    this.props.history.push("/create");
+  }
+
   render() {
     return (
       <div className="container mt-5">
-        <h5 className="text-center">View Employee Details</h5>
+        <h5 className="text-center">View Employees Details</h5>
+        <div className="row">
+          <button className="btn btn-primary mb-3" onClick={this.createEmployee}>Create</button>
+        </div>
         <div className="row">
           <table className="table table-striped table-bordered">
             <thead>
