@@ -8,6 +8,7 @@ class EmployeeComponent extends Component {
     this.state = {
       employees: [],
     };
+    this.deleteEmployee = this.deleteEmployee.bind(this);
     this.createEmployee = this.createEmployee.bind(this);
   }
 
@@ -28,6 +29,13 @@ class EmployeeComponent extends Component {
     this.props.history.push(`update-employee/${id}`);
   }
 
+  async deleteEmployee(id) {
+    await EmployeeService.deleteEmployee(id);
+    this.setState({
+      employees: this.state.employees.filter((employee) => employee.id !== id),
+    });
+  }
+
   render() {
     return (
       <div className="container mt-5">
@@ -44,6 +52,7 @@ class EmployeeComponent extends Component {
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email Address</th>
@@ -53,6 +62,7 @@ class EmployeeComponent extends Component {
             <tbody>
               {this.state.employees.map((employee) => (
                 <tr key={employee.id}>
+                  <td>{employee.id}</td>
                   <td>{employee.firstName}</td>
                   <td>{employee.lastName}</td>
                   <td>{employee.emailAddress}</td>
@@ -68,6 +78,12 @@ class EmployeeComponent extends Component {
                       onClick={() => this.updateEmployee(employee.id)}
                     >
                       Update
+                    </button>
+                    <button
+                      className="btn btn-danger ml-2"
+                      onClick={() => this.deleteEmployee(employee.id)}
+                    >
+                      Delete
                     </button>
                   </td>
                 </tr>
