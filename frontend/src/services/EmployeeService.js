@@ -6,6 +6,10 @@ class EmployeeService {
     return axios.get(BASE_URL);
   }
 
+  getEmployee(id) {
+    return axios.get(BASE_URL + "/" + id);
+  }
+
   createEmployee(employee) {
     return axios.post(BASE_URL, employee);
   }
