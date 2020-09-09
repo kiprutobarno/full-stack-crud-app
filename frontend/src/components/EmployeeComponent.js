@@ -24,6 +24,10 @@ class EmployeeComponent extends Component {
     this.props.history.push(`/employees/${id}`);
   }
 
+  updateEmployee(id) {
+    this.props.history.push(`update-employee/${id}`);
+  }
+
   render() {
     return (
       <div className="container mt-5">
@@ -54,10 +58,16 @@ class EmployeeComponent extends Component {
                   <td>{employee.emailAddress}</td>
                   <td>
                     <button
-                      className="btn btn-success ml-5"
+                      className="btn btn-success ml-2"
                       onClick={() => this.viewEmployee(employee.id)}
                     >
                       View
+                    </button>
+                    <button
+                      className="btn btn-info ml-2"
+                      onClick={() => this.updateEmployee(employee.id)}
+                    >
+                      Update
                     </button>
                   </td>
                 </tr>
