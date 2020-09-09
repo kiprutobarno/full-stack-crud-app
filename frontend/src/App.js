@@ -5,6 +5,7 @@ import HeaderComponent from "./components/HeaderComponent";
 import EmployeeComponent from "./components/EmployeeComponent";
 import FooterComponent from "./components/FooterComponent";
 import ViewEmployeeComponent from "./components/ViewEmployeeComponent";
+import UpdateEmployeeComponent from "./components/UpdateEmployeeComponent";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" exact component={EmployeeComponent} />
           <Route path="/create" component={CreateComponent} />
           <Route path="/employees/:id" component={ViewEmployeeComponent} />
+          <Route path="/update-employee/:id" component={UpdateEmployeeComponent} />
         </Switch>
         <FooterComponent />
       </Router>
